@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GEORANK 🇬🇪</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+/* ===== FONT: ჩაანაცვლე მხოლოდ ეს ფაილი (font.ttf) ან შეცვალე ქვემოთ url-ის სახელი ===== */
+@font-face{font-family:'AppFont';src:url('font.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+:root{--font:'AppFont','Noto Sans Georgian','Segoe UI',system-ui,sans-serif}
+/* ფონტის შესაცვლელად: ჩაანაცვლე მხოლოდ font.ttf ფაილი ამ HTML-ის გვერდით */
+@font-face{font-family:'AppFont';src:url('font.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+:root{--font:'AppFont','Noto Sans Georgian',system-ui,sans-serif;--bg:#09090B;--v:#8B5CF6;--c:#06B6D4;--r:#F43F5E;--g:rgba(255,255,255,.06);--b:rgba(255,255,255,.1)}
+html,body{background:var(--bg);color:#f4f4f5;font-family:var(--font);overflow-x:hidden}
+body{min-height:100vh;background:radial-gradient(600px 400px at 10% -5%,rgba(139,92,246,.25),transparent),radial-gradient(500px 400px at 100% 30%,rgba(6,182,212,.15),transparent),var(--bg)}
+#app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:40px}
+button,input,select{font-family:inherit;color:inherit;font-size:15px}
+button{cursor:pointer;border:0}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 12px;background:rgba(9,9,11,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--b)}
+.logo{font-weight:900;font-size:18px;letter-spacing:.5px}
+.pill{font-size:11px;padding:4px 8px;border-radius:99px;background:var(--g);border:1px solid var(--b);white-space:nowrap}
+.sp{flex:1}
+.ib{width:40px;height:40px;border-radius:12px;background:var(--g);border:1px solid var(--b);font-size:18px}
+.cta{height:40px;padding:0 12px;border-radius:12px;background:linear-gradient(135deg,var(--v),var(--c));font-weight:700;font-size:13px}
+#main{padding:12px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tab{flex:1;padding:12px 6px;border-radius:12px;background:var(--g);border:1px solid var(--b);font-weight:700;font-size:13px}
+.tab.on{background:var(--v);border-color:var(--v)}
+.row{display:flex;gap:6px;margin-bottom:10px}
+input[type=text],select{width:100%;padding:12px;border-radius:12px;background:var(--g);border:1px solid var(--b);outline:0}
+input:focus,select:focus{border-color:var(--c)}
+select option{background:#18181b}
+.sm{padding:0 12px;border-radius:12px;background:var(--g);border:1px solid var(--b);font-size:12px;font-weight:600;white-space:nowrap}
+.sm.on{background:var(--c);color:#041014}
+.card{display:block;width:100%;text-align:left;padding:14px;margin-bottom:8px;border-radius:16px;background:var(--g);border:1px solid var(--b);backdrop-filter:blur(10px)}
+.card b{display:block;font-size:15px;margin-bottom:4px}
+.card span{font-size:12px;opacity:.7}
+.empty{text-align:center;opacity:.6;padding:40px 0}
+.top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+h2{font-size:18px;font-weight:900;margin:6px 0 2px}
+.chipm{display:inline-block;font-size:11px;padding:3px 9px;border-radius:99px;background:var(--v);margin-bottom:10px}
+.tier{display:flex;min-height:56px;background:var(--g);border-radius:12px;overflow:hidden;margin-bottom:6px;cursor:pointer;border:1px solid var(--b)}
+.tl{width:78px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#111;text-align:center}
+.tl small{font-size:9px;font-weight:700;padding:0 3px}
+.tc{flex:1;display:flex;flex-wrap:wrap;gap:4px;padding:6px;align-content:flex-start}
+.pool{display:flex;flex-wrap:wrap;gap:6px;padding:10px;border-radius:14px;background:var(--g);border:1px dashed var(--b);margin:10px 0;min-height:56px}
+.chip{padding:8px 10px;border-radius:10px;background:#27272a;border:1px solid var(--b);font-size:13px;font-weight:600}
+.chip.sel{background:var(--v);border-color:#fff;box-shadow:0 0 14px var(--v)}
+.hint{font-size:12px;opacity:.65;margin:8px 0}
+.big{text-align:center;padding:26px 10px;border-radius:20px;background:linear-gradient(135deg,rgba(139,92,246,.3),rgba(6,182,212,.2));border:1px solid var(--b);margin:10px 0;animation:pop .3s}
+.big .e{font-size:64px}.big .n{font-size:20px;font-weight:900;margin-top:6px}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.slots{display:grid;gap:6px}
+.slot{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 12px;border-radius:12px;background:var(--g);border:1px solid var(--b);text-align:left;font-weight:700}
+.slot i{font-style:normal;font-weight:900;color:var(--c);width:30px}
+.slot.lock{background:rgba(139,92,246,.25);cursor:default}
+.bar{height:14px;border-radius:99px;background:var(--g);overflow:hidden;margin:6px 0 12px;border:1px solid var(--b)}
+.bar div{height:100%;background:linear-gradient(90deg,var(--c),var(--v));transition:width .4s}
+.bar.low div{background:linear-gradient(90deg,var(--r),#fb923c)}
+.shake{animation:sh .45s}
+@keyframes sh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.it{padding:10px;border-radius:12px;background:var(--g);border:1px solid var(--b);text-align:left;font-size:13px;font-weight:600}
+.it b{display:block;color:var(--c);margin-top:2px}
+.it.dim{opacity:.35}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.acts .full{grid-column:1/-1}
+.btn{padding:14px 8px;border-radius:14px;background:var(--g);border:1px solid var(--b);font-weight:700;font-size:13px}
+.btn.p{background:linear-gradient(135deg,var(--v),var(--r));border:0;font-size:15px}
+.done{padding:12px;border-radius:14px;background:rgba(6,182,212,.15);border:1px solid var(--c);text-align:center;margin:10px 0;font-weight:700}
+#modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);display:none;align-items:flex-end;justify-content:center}
+#modal.on{display:flex}
+.sheet{width:100%;max-width:480px;max-height:92vh;overflow:auto;background:#121216;border-radius:22px 22px 0 0;padding:16px;border:1px solid var(--b)}
+.sheet label{display:block;font-size:12px;opacity:.7;margin:10px 0 4px}
+.ir{display:flex;gap:6px;margin-bottom:6px}
+.ir input:first-child{width:62px;text-align:center;font-size:20px;padding:8px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);padding:12px 18px;border-radius:14px;background:#27272a;border:1px solid var(--c);z-index:99;transition:.3s;font-weight:700;font-size:14px;max-width:90vw;text-align:center}
+#toast.on{transform:translateX(-50%) translateY(0)}
+#toast.bad{border-color:var(--r);background:#3b0d17}
+#poster{position:fixed;left:-10000px;top:0;width:360px;height:640px;overflow:hidden;background:linear-gradient(160deg,#1a1033,#09090B 50%,#06222b);padding:22px 18px;display:flex;flex-direction:column;font-family:var(--font);color:#fff}
+.p-h{font-weight:900;font-size:22px;text-align:center}
+.p-t{font-weight:700;font-size:15px;text-align:center;margin:8px 0 12px;opacity:.9}
+.p-b{flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+.p-r{display:flex;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.07);min-height:40px}
+.p-l{width:44px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#111;flex:none}
+.p-c{display:flex;flex-wrap:wrap;gap:3px;padding:4px;align-content:center}
+.p-c span{font-size:10px;background:rgba(255,255,255,.12);padding:3px 6px;border-radius:6px}
+.p-li{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);padding:8px 10px;border-radius:10px;font-size:14px;font-weight:700}
+.p-li i{font-style:normal;color:#06B6D4;font-weight:900;width:28px}
+.p-li em{margin-left:auto;font-style:normal;color:#8B5CF6}
+.p-roast{text-align:center;margin-top:10px;padding:10px;border-radius:12px;background:rgba(244,63,94,.18);border:1px solid #F43F5E;font-weight:900;font-size:13px}
+.p-f{text-align:center;margin-top:10px;font-size:13px;font-weight:700;opacity:.85}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+<span class="logo">GEORANK 🇬🇪</span>
+<span class="pill" id="status">🟡 იტვირთება...</span>
+<span class="sp"></span>
+<button class="ib" id="snd" aria-label="ხმა">🔊</button>
+<button class="cta" id="create">+ შექმენი შენი</button>
+</header>
+<div id="main"></div>
+</div>
+<div id="modal"><div class="sheet" id="sheet"></div></div>
+<div id="toast"></div>
+<div id="poster"></div>
+
+<script type="module">
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const MODE={tier_list:'კლასიკური რეიტინგი',blind_ranking:'ბრმა რეიტინგი',budget_draft:'ბიუჯეტის დრაფტი'};
+const TIERS=[{k:'S',c:'#FF4757',n:'ღმერთების დონე 👑',s:95},{k:'A',c:'#FFA502',n:'ტოპი 🔥',s:78},{k:'B',c:'#ECCC68',n:'კარგია 👍',s:60},{k:'C',c:'#2ED573',n:'წავა რა 😐',s:42},{k:'D',c:'#747D8C',n:'არა 🗑️',s:25}];
+const OFFICIAL=[
+{id:"official_food",mode:"tier_list",title:"ქართული კერძების რეიტინგი 🇬🇪",items:[["f1","ხინკალი","🥟",98],["f2","აჭარული ხაჭაპური","🛶",95],["f3","მწვადი","🍢",92],["f4","შქმერული","🍗",85],["f5","ლობიანი","🫓",78],["f6","ელარჯი","🧀",84],["f7","ხარჩო","🍲",72],["f8","ბადრიჯანი ნიგვზით","🍆",80],["f9","ჩაქაფული","🌿",76],["f10","კუბდარი","🥧",88]].map(a=>({id:a[0],name:a[1],emoji:a[2],popularity:a[3]}))},
+{id:"official_districts",mode:"tier_list",title:"თბილისის უბნების რეიტინგი 🏙️",items:[["u1","საბურთალო","🏢",85],["u2","ვაკე","🌳",82],["u3","გლდანი","🚇",75],["u4","ვარკეთილი","🏘️",68],["u5","სოლოლაკი","🏛️",90],["u6","დიდი დიღომი","🌬️",55],["u7","მთაწმინდა","🎡",91],["u8","ნაძალადევი","🛤️",65],["u9","ისანი","🌉",62],["u10","დიღმის მასივი","🌲",77]].map(a=>({id:a[0],name:a[1],emoji:a[2],popularity:a[3]}))},
+{id:"official_supra",mode:"budget_draft",title:"ააწყვე იდეალური სუფრა 50₾-ად 💸",budget:50,items:[["b1","20 ხინკალი",25,"🥟"],["b2","მწვადი შამფურზე",20,"🍢"],["b3","იმერული ხაჭაპური",15,"🧀"],["b4","კარტოფილი ფრი",8,"🍟"],["b5","კიტრი-პომიდვრის სალათი",7,"🥗"],["b6","ლიმონათი (2 ბოთლი)",6,"🍾"],["b7","ლუდი (4 კათხა)",16,"🍺"],["b8","შოთის პური & ტყემალი",5,"🥖"],["b9","ქაბაბი",14,"🌯"],["b10","სოკო კეცზე",12,"🍄"]].map(a=>({id:a[0],name:a[1],price:a[2],emoji:a[3]}))}
+];
+
+const S={tab:'official',q:'',sort:'new',tpl:null,g:null,done:false,counted:false,sound:true,community:[],stats:{},created:false,pending:decodeURIComponent(location.hash.slice(1))||null};
+
+/* ---------- sound & toast ---------- */
+let ac;
+function snd(f=520,d=.08,t='sine'){if(!S.sound)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.12,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+let tt;
+function toast(m,bad){const t=$('#toast');t.textContent=m;t.className='on'+(bad?' bad':'');clearTimeout(tt);tt=setTimeout(()=>t.className='',2200);if(bad)snd(160,.2,'sawtooth')}
+const plays=id=>(S.stats[id]&&S.stats[id].plays)||0;
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+const link=()=>location.href.split('#')[0]+'#'+encodeURIComponent(S.tpl.id);
+
+/* ---------- db (artifact runtime) ---------- */
+let db=null,uid='anon',started=false;
+function setStatus(ok,err){$('#status').textContent=err?'🔴 ოფლაინ':ok?'🟢 ონლაინ':'🟡 იტვირთება...'}
+(async()=>{try{const c=window.claude;db=c?await c.use('db'):null;if(!db){setStatus(false,true);return}
+try{const u=await c.use('user');if(u&&u.id)uid=await u.id()}catch(e){}
+setStatus(true);startDb()}catch(e){setStatus(false,true)}})();
+const validT=t=>t&&t.id&&typeof t.title==='string'&&Array.isArray(t.items)&&MODE[t.mode];
+function startDb(){
+  if(started)return;started=true;
+  db.collection('templates').onSnapshot(s=>{
+    S.community=s.docs.map(d=>d.data()).filter(validT).map(t=>({...t,items:t.items.filter(Boolean)}));
+    if(S.pending){const t=S.community.find(x=>x.id===S.pending);if(t){S.pending=null;openT(t)}}
+    else if(!S.tpl&&S.tab==='community')drawList();
+  },()=>setStatus(false,true));
+  db.collection('stats').onSnapshot(s=>{S.stats={};s.docs.forEach(d=>{S.stats[d.id]=d.data()});if(!S.tpl)drawList()},()=>{});
+}
+async function countPlay(){
+  if(S.counted)return;S.counted=true;if(!db)return;
+  try{const r=db.collection('stats').doc(S.tpl.id);const s=await r.get();await r.set({plays:(s.exists?(s.data().plays||0):0)+1})}catch(e){}
+}
+
+/* ---------- home ---------- */
+function home(){
+  S.tpl=null;
+  $('#main').innerHTML=`<div class="tabs"><button class="tab ${S.tab==='official'?'on':''}" data-tab="official">⭐ ოფიციალური</button><button class="tab ${S.tab==='community'?'on':''}" data-tab="community">🌍 ხალხის შექმნილი</button></div>`+
+  (S.tab==='community'?`<div class="row"><input type="text" id="q" placeholder="🔍 ძებნა..." value="${esc(S.q)}"><button class="sm ${S.sort==='new'?'on':''}" data-sort="new">ახალი</button><button class="sm ${S.sort==='pop'?'on':''}" data-sort="pop">პოპულარული</button></div>`:'')+'<div id="list"></div>';
+  drawList();
+}
+function drawList(){
+  const el=$('#list');if(!el)return;
+  let a=S.tab==='official'?OFFICIAL:S.community.filter(t=>t.title.toLowerCase().includes(S.q.toLowerCase()));
+  if(S.tab==='community')a=[...a].sort((x,y)=>S.sort==='pop'?plays(y.id)-plays(x.id):(y.createdAt||0)-(x.createdAt||0));
+  el.innerHTML=a.length?a.map(t=>`<button class="card" data-open="${esc(t.id)}"><b>${esc(t.title)}</b><span>${MODE[t.mode]} • ${t.items.length} ელემენტი • ▶ ${plays(t.id)} თამაში</span></button>`).join(''):'<div class="empty">ჯერ არაფერია. შექმენი პირველი! ✨</div>';
+}
+
+/* ---------- game ---------- */
+function openT(t){S.tpl=t;S.created=false;history.replaceState(null,'','#'+encodeURIComponent(t.id));initG();render()}
+function initG(){
+  const t=S.tpl;S.done=false;S.counted=false;
+  if(t.mode==='tier_list')S.g={placed:{},sel:null};
+  else if(t.mode==='blind_ranking'){const it=shuffle(t.items).slice(0,5);S.g={items:it,i:0,slots:Array(it.length).fill(null)}}
+  else S.g={picks:[]};
+}
+const spent=()=>S.g.picks.reduce((s,p)=>s+p.price,0);
+function finish(){S.done=true;countPlay();snd(780,.25,'triangle');toast('🎉 დასრულდა!')}
+function chip(it,attr){return `<button class="chip ${S.g.sel===it.id?'sel':''}" ${attr}="${esc(it.id)}">${esc(it.emoji)} ${esc(it.name)}</button>`}
+function render(){
+  if(!S.tpl)return home();
+  const t=S.tpl,g=S.g;let body='';
+  if(t.mode==='tier_list'){
+    body=TIERS.map(r=>`<div class="tier" data-tier="${r.k}"><div class="tl" style="background:${r.c}">${r.k}<small>${r.n}</small></div><div class="tc">${t.items.filter(i=>g.placed[i.id]===r.k).map(i=>chip(i,'data-rm')).join('')}</div></div>`).join('')+
+    `<div class="hint">ააჭირე ელემენტს, მერე რიგს, სადაც გინდა მოხვდეს 👇</div><div class="pool">${t.items.filter(i=>!g.placed[i.id]).map(i=>chip(i,'data-chip')).join('')||'<span class="hint">ყველაფერი განაწილებულია ✅</span>'}</div>`;
+  }else if(t.mode==='blind_ranking'){
+    const cur=g.items[g.i];
+    body=(cur?`<div class="big"><div class="hint">ელემენტი ${g.i+1} / ${g.items.length}</div><div class="e">${esc(cur.emoji)}</div><div class="n">${esc(cur.name)}</div></div><div class="hint">აირჩიე ადგილი — შეცვლა აღარ იქნება 🔒</div>`:'')+
+    `<div class="slots">${g.slots.map((s,k)=>s?`<div class="slot lock"><i>#${k+1}</i>${esc(s.emoji)} ${esc(s.name)}</div>`:`<button class="slot" data-slot="${k}"><i>#${k+1}</i>${cur?'ცარიელი':''}</button>`).join('')}</div>`;
+  }else{
+    const rem=t.budget-spent();
+    body=`<div id="bud"><b>დარჩენილი ბიუჯეტი: ${rem}₾</b><div class="bar ${rem<t.budget*.2?'low':''}"><div style="width:${Math.max(0,rem/t.budget*100)}%"></div></div></div>
+    <div class="hint">ჩემი არჩევანი (${g.picks.length}/5) — წასაშლელად დააჭირე</div><div class="pool">${g.picks.map(p=>`<button class="chip" data-unpick="${esc(p.id)}">${esc(p.emoji)} ${esc(p.name)} • ${p.price}₾</button>`).join('')||'<span class="hint">ჯერ ცარიელია</span>'}</div>
+    <div class="grid">${t.items.map(i=>`<button class="it ${g.picks.some(p=>p.id===i.id)?'dim':''}" data-buy="${esc(i.id)}">${esc(i.emoji)} ${esc(i.name)}<b>${i.price}₾</b></button>`).join('')}</div>`+
+    (!S.done&&g.picks.length?'<button class="btn p full" style="width:100%;margin-top:10px" data-act="finish">✅ დასრულება</button>':'');
+  }
+  $('#main').innerHTML=`<div class="top"><button class="sm" style="height:36px" data-act="back">← უკან</button></div><h2>${esc(t.title)}</h2><span class="chipm">${MODE[t.mode]}</span>`+
+  (S.created?'<div class="done">✨ თემა შექმნილია! გააზიარე ლინკი 👇<br><button class="btn" style="margin-top:8px" data-act="link">🔗 ლინკის კოპირება</button></div>':'')+
+  (S.done?'<div class="done">🎉 დასრულებულია!</div>':'')+body+
+  `<div class="acts"><button class="btn p full" data-act="save">📸 ფოტოდ გადმოწერა (Story)</button><button class="btn" data-act="share">📤 გაზიარება</button><button class="btn" data-act="reset">🔄 თავიდან</button><button class="btn" data-act="rand">🎲 შემთხვევითი</button><button class="btn" data-act="link">🔗 თემის ლინკი</button></div>`;
+  window.scrollTo(0,0);
+}
+
+/* ---------- roast & poster ---------- */
+function hasData(){const g=S.g;return S.tpl.mode==='tier_list'?Object.keys(g.placed).length>0:S.tpl.mode==='blind_ranking'?g.slots.some(Boolean):g.picks.length>0}
+function posterHTML(){
+  const t=S.tpl,g=S.g;let b='';
+  if(t.mode==='tier_list')b=TIERS.map(x=>`<div class="p-r"><div class="p-l" style="background:${x.c}">${x.k}</div><div class="p-c">${t.items.filter(i=>g.placed[i.id]===x.k).map(i=>`<span>${esc(i.emoji)} ${esc(i.name)}</span>`).join('')}</div></div>`).join('');
+  else if(t.mode==='blind_ranking')b=g.slots.map((s,k)=>s?`<div class="p-li"><i>#${k+1}</i>${esc(s.emoji)} ${esc(s.name)}</div>`:'').join('');
+  else b=g.picks.map(p=>`<div class="p-li">${esc(p.emoji)} ${esc(p.name)}<em>${p.price}₾</em></div>`).join('')+`<div class="p-li" style="background:rgba(139,92,246,.3)">💰 ჯამი<em>${spent()}₾ / ${t.budget}₾</em></div>`;
+  return `<div class="p-h">GEORANK 🇬🇪</div><div class="p-t">${esc(t.title)}</div><div class="p-b">${b}</div><div class="p-f">შეადგინე შენი 👉 GEORANK</div>`;
+}
+async function exportImg(share){
+  if(!hasData())return toast('ჯერ რამე აირჩიე! 👆',true);
+  if(typeof html2canvas==='undefined')return toast('ბიბლიოთეკა ვერ ჩაიტვირთა 😕',true);
+  toast('⏳ მზადდება...');
+  try{
+    $('#poster').innerHTML=posterHTML();
+    if(document.fonts){try{await document.fonts.load('700 16px AppFont')}catch(e){}await document.fonts.ready}
+    const c=await html2canvas($('#poster'),{scale:3,backgroundColor:'#09090B',logging:false});
+    const blob=await new Promise(r=>c.toBlob(r,'image/png'));
+    const file=new File([blob],'georank.png',{type:'image/png'});
+    if(share&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'GEORANK 🇬🇪'});return}
+    const dl=window.claude?await window.claude.use('downloads'):null;
+    if(!dl)return toast('ჩამოტვირთვა მიუწვდომელია 😕',true);
+    await dl.save({filename:'georank.png',data:blob});
+    toast('✅ ფოტო შენახულია!');
+  }catch(e){if(e&&e.name!=='AbortError'&&e.code!=='declined')toast('შეცდომა, სცადე თავიდან 😕',true)}
+}
+async function copyLink(){
+  const l=link();
+  try{await navigator.clipboard.writeText(l);toast('🔗 ლინკი დაკოპირდა!')}
+  catch(e){const i=document.createElement('input');i.value=l;document.body.appendChild(i);i.select();try{document.execCommand('copy');toast('🔗 ლინკი დაკოპირდა!')}catch(x){toast(l)}i.remove()}
+}
+function randomize(){
+  initG();const t=S.tpl,g=S.g;
+  if(t.mode==='tier_list')t.items.forEach(i=>g.placed[i.id]=TIERS[Math.floor(Math.random()*5)].k);
+  else if(t.mode==='blind_ranking'){g.slots=shuffle(g.items);g.i=g.items.length}
+  else{for(const i of shuffle(t.items)){if(g.picks.length<5&&i.price<=t.budget-spent())g.picks.push(i)}}
+  finish();render();
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const d=e.target.closest('[data-tab],[data-sort],[data-open],[data-act],[data-rm],[data-chip],[data-tier],[data-slot],[data-buy],[data-unpick]');
+  if(!d)return;const D=d.dataset;
+  if(D.tab){S.tab=D.tab;home();return}
+  if(D.sort){S.sort=D.sort;home();return}
+  if(D.open){const t=OFFICIAL.concat(S.community).find(x=>x.id===D.open);if(t){snd(600);openT(t)}return}
+  if(D.act){
+    const a=D.act;
+    if(a==='back'){history.replaceState(null,'',location.href.split('#')[0]);S.tpl=null;home()}
+    else if(a==='save')exportImg(false);
+    else if(a==='share')exportImg(true);
+    else if(a==='reset'){initG();render();snd(400)}
+    else if(a==='rand')randomize();
+    else if(a==='link')copyLink();
+    else if(a==='finish'){finish();render()}
+    return;
+  }
+  if(!S.tpl)return;
+  const g=S.g,t=S.tpl;
+  if(D.rm){delete g.placed[D.rm];S.done=false;snd(300);render();return}
+  if(D.chip){g.sel=g.sel===D.chip?null:D.chip;snd(520);render();return}
+  if(D.tier){
+    if(!g.sel)return toast('ჯერ აირჩიე ელემენტი 👆');
+    g.placed[g.sel]=D.tier;g.sel=null;snd(660);
+    if(t.items.every(i=>g.placed[i.id]))finish();
+    render();return;
+  }
+  if(D.slot!==undefined){
+    const k=+D.slot;if(g.slots[k]||g.i>=g.items.length)return;
+    g.slots[k]=g.items[g.i++];snd(540+k*60);
+    if(g.i>=g.items.length)finish();
+    render();return;
+  }
+  if(D.buy){
+    const it=t.items.find(i=>i.id===D.buy);if(!it||g.picks.some(p=>p.id===it.id))return;
+    if(g.picks.length>=5)return toast('მაქსიმუმ 5 არჩევანი! ✋',true);
+    if(it.price>t.budget-spent()){toast('ბიუჯეტი არ გყოფნის! 💸',true);const b=$('#bud');if(b){b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake')}return}
+    g.picks.push(it);snd(700);
+    if(g.picks.length>=5)finish();
+    render();return;
+  }
+  if(D.unpick){g.picks=g.picks.filter(p=>p.id!==D.unpick);S.done=false;snd(300);render()}
+});
+document.addEventListener('input',e=>{if(e.target.id==='q'){S.q=e.target.value;drawList()}});
+$('#snd').onclick=()=>{S.sound=!S.sound;$('#snd').textContent=S.sound?'🔊':'🔇';snd(600)};
+
+/* ---------- create modal ---------- */
+let rows=[];
+function sheet(){
+  $('#sheet').innerHTML=`<h2>✨ ახალი თემა</h2>
+  <label>სათაური (3-80 სიმბოლო)</label><input type="text" id="ct" maxlength="80" placeholder="მაგ: საუკეთესო ქართული სასმელი">
+  <label>რეჟიმი</label><select id="cm"><option value="tier_list">კლასიკური რეიტინგი S-D</option><option value="blind_ranking">ბრმა რეიტინგი 1-5</option></select>
+  <label>ელემენტები (5-12)</label><div id="cr"></div>
+  <div class="acts"><button class="btn" id="ca">+ დამატება</button><button class="btn" id="cx">გაუქმება</button><button class="btn p full" id="cs">🚀 შექმნა</button></div>`;
+  drawRows();
+  $('#ca').onclick=()=>{if(rows.length>=12)return toast('მაქსიმუმ 12 ელემენტი',true);rows.push({e:'',n:''});drawRows()};
+  $('#cx').onclick=closeM;
+  $('#cs').onclick=submitT;
+}
+function drawRows(){
+  $('#cr').innerHTML=rows.map((r,k)=>`<div class="ir"><input type="text" maxlength="8" placeholder="😀" value="${esc(r.e)}" data-re="${k}"><input type="text" maxlength="40" placeholder="სახელი ${k+1}" value="${esc(r.n)}" data-rn="${k}">${rows.length>5?`<button class="sm" data-rd="${k}">✕</button>`:''}</div>`).join('');
+}
+$('#sheet').addEventListener('input',e=>{const d=e.target.dataset;if(d.re!==undefined)rows[+d.re].e=e.target.value;if(d.rn!==undefined)rows[+d.rn].n=e.target.value});
+$('#sheet').addEventListener('click',e=>{const k=e.target.dataset.rd;if(k!==undefined&&rows.length>5){rows.splice(+k,1);drawRows()}});
+function closeM(){$('#modal').classList.remove('on')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeM()});
+$('#create').onclick=()=>{rows=Array.from({length:5},()=>({e:'',n:''}));sheet();$('#modal').classList.add('on');snd(600)};
+async function submitT(){
+  const title=$('#ct').value.trim(),mode=$('#cm').value;
+  if(title.length<3||title.length>80)return toast('სათაური უნდა იყოს 3-80 სიმბოლო ✍️',true);
+  if(rows.length<5||rows.some(r=>!r.n.trim()))return toast('შეავსე ყველა ელემენტის სახელი! 📝',true);
+  if(!db)return toast('ბაზა მიუწვდომელია 🔴',true);
+  const id='t'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const obj={id,title,mode,items:rows.map((x,k)=>({id:'i'+(k+1),name:x.n.trim(),emoji:x.e.trim()||'✨'})),authorUid:uid,createdAt:Date.now()};
+  $('#cs').disabled=true;
+  try{await db.collection('templates').doc(id).set(obj);closeM();S.tpl=obj;S.created=true;history.replaceState(null,'','#'+encodeURIComponent(obj.id));initG();render();snd(800,.25,'triangle');toast('🎉 თემა შეიქმნა!')}
+  catch(e){toast('შენახვა ვერ მოხერხდა 😕',true);$('#cs').disabled=false}
+}
+
+/* ---------- boot ---------- */
+const o=S.pending&&OFFICIAL.find(x=>x.id===S.pending);
+if(o){S.pending=null;openT(o)}else home();
+</script>
+</body>
+</html>
