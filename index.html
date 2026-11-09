@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SportHub Georgia — სპორტული პლატფორმა</title>
+    <!-- Tailwind CSS CDN -->
+    <!-- Primary Meta Tags -->
+<meta name="title" content="SportHub Georgia — სპორტული აქტივობებისა და ტურნირების პლატფორმა">
+<meta name="description" content="იპოვე სპორტული მეგობრები, ორგანიზება გაუკეთე ფეხბურთის, კალათბურთისა და ჩოგბურთის ტურნირებს შენს უბანში. რეალურ დროში ჩათი და ავტომატური მართვა.">
+<meta name="keywords" content="ფეხბურთი თბილისში, სპორტული ტურნირები, სპორტჰაბ ჯორჯია, მოედნის დაჯავშნა, კალათბურთი, SportHub Georgia, ტურნირების ორგანიზება">
+<meta name="author" content="SportHub Georgia Team">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sporthub.ge/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sporthub.ge/">
+<meta property="og:title" content="SportHub Georgia — სპორტული პლატფორმა">
+<meta property="og:description" content="ორგანიზება გაუკეთე სპორტულ აქტივობებს, ტურნირებს და ითამაშე მეგობრებთან ერთად.">
+<meta property="og:image" content="https://sporthub.ge/og-image.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://sporthub.ge/">
+<meta property="twitter:title" content="SportHub Georgia — სპორტული პლატფორმა">
+<meta property="twitter:description" content="ორგანიზება გაუკეთე სპორტულ აქტივობებს, ტურნირებს და ითამაშე მეგობრებთან ერთად.">
+<meta property="twitter:image" content="https://sporthub.ge/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SportHub Georgia",
+  "url": "https://sporthub.ge/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://sporthub.ge/?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        Tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+            colors: {
+                sportdark: '#050505',               // მთავარი მუქი ფონი
+                cardglass: 'rgba(20, 5, 5, 0.75)',    // მინის პანელის ფონი (მუქი წითელი ელფერით)
+                borderglass: 'rgba(255, 0, 0, 0.12)', // ჩარჩოს ფერი (მუქი წითელი გამჭვირვალე)
+                brandred: '#ff0000',                // ძირითადი კაშკაშა წითელი
+                branddarkred: '#8b0000',            // მუქი შინდისფერი (გრადიენტისთვის)
+            },
+        }
+    }
+}
+
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+
+@font-face {
+    font-family: 'Dachi The Lynx';
+    src: url('gugeshashvili_8_mthavruli_bold-52145488073.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Dachi The Lynx';
+    
+}
+        body {
+            background-color: #050505;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(180, 0, 0, 0.10) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(120, 0, 0, 0.08) 0%, transparent 60%);
+            min-height: 100vh;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(20, 5, 5, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 0, 0, 0.12);
+            box-: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+        .glass-modal {
+            background: rgba(12, 3, 3, 0.92);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 0, 0, 0.18);
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+        }
+        .brand-text-gradient {
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a0000;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff0000;
+        }
+
+    </style>
+</head>
+<body class="flex flex-col min-h-screen antialiased selection:bg-red-500 selection:text-white">
+<!-- SportHub Georgia — Standalone Loading Component -->
+<div id="sport-loader" class="fixed inset-0 z-50 flex items-center justify-center bg-[#050505]/90 backdrop-blur-xl transition-opacity duration-300">
+    <div class="flex flex-col items-center space-y-4">
+        <!-- Animated Glowing Sports Ball Icon -->
+        <div class="relative w-20 h-20 flex items-center justify-center">
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-red-600 to-rose-900 blur-xl opacity-75 animate-pulse"></div>
+            <div class="relative w-16 h-16 rounded-2xl bg-black border border-red-900/50 flex items-center justify-center text-red-500 text-2xl animate-bounce">
+                <i class="fa-solid fa-futbol"></i>
+            </div>
+        </div>
+        <!-- Brand Title & Loading Text -->
+        <div class="text-center space-y-1">
+            <h2 class="text-lg font-extrabold bg-gradient-to-r from-red-500 to-rose-700 bg-clip-text text-transparent tracking-tight">SportHub Georgia</h2>
+            <p id="loader-status-text" class="text-xs text-slate-400 font-medium">იტვირთება პლატფორმა...</p>
+        </div>
+        <!-- Pulsing Dots Loader -->
+        <div class="flex space-x-1.5 pt-2">
+            <div class="w-2 h-2 rounded-full bg-red-600 animate-ping"></div>
+            <div class="w-2 h-2 rounded-full bg-rose-700 animate-ping [animation-delay:0.2s]"></div>
+            <div class="w-2 h-2 rounded-full bg-red-900 animate-ping [animation-delay:0.4s]"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Helper function to hide loader smoothly once data is ready
+    function hideSportLoader() {
+        const loader = document.getElementById('sport-loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    // Example usage: call hideSportLoader() when your app data finishes loading
+    window.addEventListener('load', () => {
+        // setTimeout simulates data sync; replace with your actual fetch completion
+        setTimeout(hideSportLoader, 800);
+    });
+</script>
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 sm:px-6 lg:px-10 py-3.5 flex items-center justify-between transition-all">
+        <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchView('tournaments')">
+            <div class="w-11 h-11 rounded-2xl brand-gradient flex items-center justify-center  text-white text-xl transform group-hover:scale-105 transition">
+                <i class="fa-solid fa-bolt-lightning"></i>
+            </div>
+            <div>
+                <h1 style="font-size: 20px;" class="text-base sm:text-lg font-extrabold tracking-tight brand-text-gradient">SPORTHUB</h1>
+                <p class="text-[11px] text-slate-400 font-medium hidden sm:block">სპორტული აქტივობებისა და ტურნირების სივრცე</p>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-3">
+            <div id="auth-nav-container" class="flex items-center space-x-2 sm:space-x-3">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container Layout -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- Controls Toolbar (Search, Filter, Create) -->
+        <section class="glass-panel p-4 sm:p-5 rounded-3xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+            <!-- Search and Filter Bar -->
+            <div class="flex flex-col sm:flex-row items-center gap-3 flex-grow">
+                <!-- Search Input -->
+                <div class="relative w-full sm:w-80">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </span>
+                    <input type="text" id="search-input" oninput="filterTournaments()" placeholder="ძებნა სათაურით ან ლოკაციით..." class="w-full bg-slate-900/70 border border-slate-700/60 rounded-2xl pl-11 pr-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition">
+                </div>
+                <!-- Sport Category Pills -->
+                <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
+                    <button onclick="setSportFilter('all')" id="filter-all" class="sport-filter-btn px-4 py-2.5 text-xs font-bold rounded-xl brand-gradient text-white transition whitespace-nowrap ">ყველა</button>
+                    <button onclick="setSportFilter('ფეხბურთი')" id="filter-ფეხბურთი" class="sport-filter-btn px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white transition whitespace-nowrap">ფეხბურთი</button>
+                    <button onclick="setSportFilter('კალათბურთი')" id="filter-კალათბურთი" class="sport-filter-btn px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white transition whitespace-nowrap">კალათბურთი</button>
+                    <button onclick="setSportFilter('ჩოგბურთი')" id="filter-ჩოგბურთი" class="sport-filter-btn px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white transition whitespace-nowrap">ჩოგბურთი</button>
+                    <button onclick="setSportFilter('კრივი')" id="filter-კრივი" class="sport-filter-btn px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white transition whitespace-nowrap">კრივი</button>
+                                        <button onclick="setSportFilter('MMA')" id="filter-MMA" class="sport-filter-btn px-4 py-2.5 text-xs font-semibold rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white transition whitespace-nowrap">MMA</button>
+                </div>
+            </div>
+
+            <!-- Create Tournament Action Button -->
+            <button onclick="openCreateModal()" class="flex items-center justify-center space-x-2.5 px-6 py-3 rounded-2xl brand-gradient hover:opacity-95 text-white font-bold text-sm transition transform active:scale-95 whitespace-nowrap">
+                <i class="fa-solid fa-circle-plus text-base"></i>
+                <span>ტურნირის შექმნა</span>
+            </button>
+        </section>
+
+        <!-- Tournaments View Area -->
+        <section id="tournaments-view" class="space-y-6">
+            <div id="tournaments-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Dynamically injected tournament cards -->
+            </div>
+            <!-- Empty State View -->
+            <div id="empty-state" class="hidden flex flex-col items-center justify-center py-24 text-center glass-panel rounded-3xl p-8">
+                <div class="w-20 h-20 rounded-3xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-red-400 text-3xl mb-4 ">
+                    <i class="fa-solid fa-futbol animate-pulse"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-100">აქტიური ტურნირები არ მოიძებნა</h3>
+                <p class="text-sm text-slate-400 max-w-sm mt-1.5">იყავი პირველი და შექმენი ახალი სპორტული შეხვედრა შენს უბანში ან ქალაქში!</p>
+            </div>
+        </section>
+
+        <!-- Chat View Area (Hidden by default) -->
+        <section id="chat-view" class="hidden space-y-4">
+            <div class="flex items-center justify-between glass-panel p-4 rounded-3xl">
+                <button onclick="switchView('tournaments')" class="flex items-center space-x-2 px-4 py-2 rounded-2xl bg-slate-900/80 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs sm:text-sm font-semibold transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>უკან ტურნირებზე</span>
+                </button>
+                <div id="active-chat-title" class="font-extrabold brand-text-gradient text-sm sm:text-lg truncate px-2 text-center"></div>
+                <div class="w-16 sm:w-24"></div>
+            </div>
+
+            <!-- Chat Box Container -->
+            <div class="glass-panel rounded-3xl flex flex-col h-[70vh] border border-slate-800 overflow-hidden ">
+                <!-- Chat Messages List -->
+                <div id="chat-messages-container" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4 flex flex-col">
+                    <!-- Dynamic chat messages -->
+                </div>
+                <!-- Chat Input Form -->
+                <form id="chat-form" onsubmit="sendChatMessage(event)" class="p-3 sm:p-4 bg-slate-950/80 border-t border-slate-800/80 flex items-center space-x-3">
+                    <input type="text" id="chat-input" placeholder="დაწერე შეტყობინება მონაწილეებისთვის..." autocomplete="off" class="flex-grow bg-slate-900/90 border border-slate-700/60 rounded-2xl px-4 sm:px-5 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500 transition">
+                    <button type="submit" class="px-5 sm:px-6 py-3 rounded-2xl brand-gradient hover:opacity-95 text-white font-bold text-sm  transition flex items-center justify-center">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 mt-12">
+        <p>&copy; 2026 SportHub. ყველა უფლება დაცულია.</p>
+    </footer>
+
+    <!-- Auth Modal (Login / Register) -->
+    <div id="auth-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-modal rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-slate-700/50">
+            <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <div class="text-center mb-6">
+                <h2 id="auth-modal-title" class="text-2xl font-extrabold text-white">სისტემაში შესვლა</h2>
+                <p id="auth-modal-subtitle" class="text-xs sm:text-sm text-slate-400 mt-1">შეიყვანე მონაცემები ანგარიშზე წვდომისთვის</p>
+            </div>
+            <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">ელ-ფოსტა</label>
+                    <input type="email" id="auth-email" required placeholder="name@example.com" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">პაროლი</label>
+                    <input type="password" id="auth-password" required placeholder="••••••••" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="w-full py-3.5 rounded-2xl brand-gradient hover:opacity-95 text-white font-extrabold text-sm   transition mt-2">შესვლა</button>
+            </form>
+            <div class="text-center mt-6 text-xs sm:text-sm text-slate-400">
+                <span id="auth-switch-text">არ გაქვს ანგარიში?</span>
+                <button onclick="toggleAuthMode()" id="auth-switch-btn" class="brand-text-gradient font-bold hover:underline ml-1">რეგისტრაცია</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Tournament Modal -->
+    <div id="create-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-modal rounded-3xl max-w-lg w-full p-6 sm:p-8  relative border border-slate-700/50 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCreateModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <div class="mb-6">
+                <h2 class="text-2xl font-extrabold text-white">ტურნირის შექმნა</h2>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">შეავსე დეტალები, რათა სხვებმაც შეძლონ მონაწილეობა</p>
+            </div>
+            <form id="create-form" onsubmit="handleCreateTournament(event)" class="space-y-4">
+                <div>
+                    
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">სათაური / აღწერა</label>
+                    <input type="text" id="t-title" required placeholder="მაგ: საღამოს ფეხბურთი საბურთალოზე" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">სპორტის სახეობა</label>
+                        <select id="t-sport" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                            <option value="ფეხბურთი">ფეხბურთი</option>
+                            <option value="კალათბურთი">კალათბურთი</option>
+                            <option value="ჩოგბურთი">ჩოგბურთი</option>
+                            <option value="კრივი">კრივი</option>
+                             <option value="MMA">MMA</option>
+                            <option value="სხვა">სხვა</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">მაქს. მონაწილეები</label>
+                        <input type="number" id="t-max" min="2" max="100" value="10" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">ლოკაცია / მოედანი</label>
+                    <input type="text" id="t-location" required placeholder="მაგ: 53-ე სკოლის სტადიონი, ვაკე" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">ჩატარების დრო (თარიღი და საათი)</label>
+                    <input type="datetime-local" id="t-datetime" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-red-500 transition">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-2xl brand-gradient hover:opacity-95 text-white font-extrabold text-sm  transition mt-4">პოსტის გამოქვეყნება</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div id="custom-alert-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-modal rounded-3xl max-w-sm w-full p-6 sm:p-7  text-center border border-slate-700/50 space-y-4">
+            <div id="alert-icon" class="w-14 h-14 rounded-2xl bg-red-500/20 text-red-400 flex items-center justify-center mx-auto text-2xl ">
+                <i class="fa-solid fa-info"></i>
+            </div>
+            <h3 id="alert-title" class="text-lg font-extrabold text-white">შეტყობინება</h3>
+            <p id="alert-message" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+            <button onclick="closeCustomAlert()" class="w-full py-3 rounded-2xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-white font-bold text-sm transition">კარგი</button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js">script.js</script>
+</body>
+</html>
