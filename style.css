@@ -1,0 +1,58 @@
+    @font-face {
+    font-family: 'Dachi The Lynx';
+    src: url('gugeshashvili_8_mthavruli_bold-52145488073.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Dachi The Lynx';
+    
+}
+        body {
+            
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(239, 68, 68, 0.16) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(153, 27, 27, 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(70, 5, 10, 0.10) 0%, transparent 70%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 3, 5, 0.88);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(239, 68, 68, 0.16);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+        }
+        .glass-modal {
+            background: rgba(8, 2, 4, 0.96);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #7f1d1d 100%);
+        }
+        .brand-text-gradient {
+            background: linear-gradient(135deg, #FF0000 0%, #FF0606 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #450a0a;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #991b1b;
+        }
